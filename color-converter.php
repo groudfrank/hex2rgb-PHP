@@ -87,7 +87,7 @@ catch(HexCharacterCountException $ex){
 }
 
 catch(HexRangeException $ex){
-    echo 'Values entered were outside the hexadecimal color range';
+    echo 'Values entered were outside the hexadecimal channel range';
 }
 
 #-----------------------------------------------------------------------------------------------
@@ -136,7 +136,7 @@ try{
 
     // Checks for CERTAIN special characters stored in the input
     // (special characters listed in rgb_special_char)
-    // 
+    // '(' ')' ',' are excluded.
     if(preg_match($rgb_special_char, $color_input_rgb) == 1){
         throw new RGBSpecialCharacterException();
     }
@@ -146,7 +146,7 @@ try{
     }
 
     // Function splits each channel, converts them to Hexadecimal,
-    // concatinates them and returns the value as a string.
+    // concatenates them and returns the value as a string.
     function rgb2hex($color) {
 
         $color = filter_var($color, FILTER_SANITIZE_STRING);
@@ -176,7 +176,7 @@ catch(RGBSpecialCharacterException $ex){
 }
 
 catch(RGBRangeException $ex){
-    echo 'A number entered is out of range. Please ensure numbers entered are integers between 0 and 255';
+    echo 'A number entered is out of the rgb channel range. Please ensure numbers entered are integers between 0 and 255';
 }
 
 ?>
